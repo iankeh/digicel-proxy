@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 10000,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "b5c0d6a7-e8f9-4a3b-8c1d-2e3f4a5b6c7d",
+            "flow": ""
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "h2",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "mda.digicelgroup.com",
+          "certificates": [
+            {
+              "certificateFile": "/app/cert.pem",
+              "keyFile": "/app/key.pem"
+            }
+          ],
+          "alpn": ["h2", "http/1.1"]
+        },
+        "httpSettings": {
+          "host": [
+            "mda.digicelgroup.com",
+            "chat.digicelpacific.com",
+            "digicelid.digicelpacific.com",
+            "mydigicelpng.digicelpacific.com"
+          ],
+          "path": "/api/v1/stream"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ]
+}
