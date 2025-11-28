@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: digicel-proxy
+    env: docker
+    plan: free
+    docker:
+      dockerfile: Dockerfile
+    envVars:
+      - key: PORT
+        value: 10000
